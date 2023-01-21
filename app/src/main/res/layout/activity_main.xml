@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3E8E8"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:layout_weight="1"
+        android:background="#E3E8E8"
+        android:text="LOGIN"
+        android:textAlignment="center"
+        android:textColor="#009688"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:layout_weight="1.1"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        android:layout_weight="1.1"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:textSize="40sp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:layout_weight="1.15"
+        android:background="@drawable/design_button"
+        android:onClick="loginFunc"
+        android:text="Login"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:layout_weight="1.15"
+        android:background="@drawable/design_button"
+        android:onClick="regFunc"
+        android:text="Register"
+        android:textSize="30sp" />
+</LinearLayout>
