@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText passwordText;
     FirebaseDatabase database;
     DatabaseReference myRef;
-
+    int id = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+        writeDB(email, password);
     }
 
     public void readDB () {
@@ -85,8 +86,8 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                User value = dataSnapshot.getValue(User.class);
-                Toast.makeText(MainActivity.this, value.name,
+                Users value = dataSnapshot.getValue(Users.class);
+                Toast.makeText(MainActivity.this, value.email,
                         Toast.LENGTH_LONG).show();
             }
 
@@ -97,12 +98,27 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void writeDB () {
+    public void writeDB (String email, String password) {
 
-        User p = new User("Rotem", "1", "0545321648","r@g.com");
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users").child(p.id);
+        myRef = database.getReference().child("Users");
 
-        myRef.setValue(p);
+        myRef.addValueEventListener (new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    id = (int) snapshot.getChildrenCount();
+                }else {}
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        Users p = new Users(email, password);
+        myRef = database.getReference().child("Users");
+        myRef.child(String.valueOf(id+1)).setValue(p);
     }
 }
