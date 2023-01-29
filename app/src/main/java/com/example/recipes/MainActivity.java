@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        Users p = new Users(email, password);
+        Users p = new Users(email, password, "rotem");
         myRef = database.getReference().child("Users");
         myRef.child(String.valueOf(id+1)).setValue(p);
     }
