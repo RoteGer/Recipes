@@ -3,82 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E3E8E8"
     android:orientation="vertical"
     tools:context=".Login">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:background="#E3E8E8"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center"
-        android:text="LOGIN HERE"
-        android:textColor="#00897B"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/emailAddress"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="50dp"
-        android:layout_weight="1.1"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:textSize="30sp"
-        android:padding="5dp"/>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/graph" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="50dp"
-        android:layout_weight="1.1"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="text"
-        android:textSize="30sp"
-        android:padding="5dp"/>
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="30dp"
-        android:layout_weight="1.15"
-        android:background="@drawable/design_button"
-        android:onClick="loginFunc"
-        android:text="Login"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="30sp"
-        />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have an account?"
-            android:layout_margin="10dp"
-            />
-
-        <TextView
-            android:id="@+id/registerHere"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_marginStart="5dp"
-            android:text="Register here"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 </LinearLayout>

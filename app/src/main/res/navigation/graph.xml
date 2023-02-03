@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph"
+    app:startDestination="@id/fragmentLogin">
+
+    <fragment
+        android:id="@+id/home2"
+        android:name="com.example.recipes.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <activity
+        android:id="@+id/productListActivity"
+        android:name="com.example.recipes.Login.ProductListActivity"
+        android:label="ProductListActivity" />
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.example.recipes.FragmentLogin"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_home2"
+            app:destination="@id/home2" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_register"
+            app:destination="@id/register" />
+    </fragment>
+    <activity
+        android:id="@+id/register"
+        android:name="com.example.recipes.Register"
+        android:label="activity_register"
+        tools:layout="@layout/activity_register" />
+</navigation>

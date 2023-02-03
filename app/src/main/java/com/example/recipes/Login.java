@@ -36,46 +36,5 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance(); // local
-
-        emailText = findViewById(R.id.emailAddress);
-        passwordText = findViewById(R.id.password);
-        loginBtn = findViewById(R.id.loginBtn);
-
-        registerHereBtn = findViewById(R.id.registerHere);
-
-        registerHereBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                // open Register activity
-                startActivity(new Intent(Login.this, Register.class));
-            }
-        });
-    }
-
-    public void loginFunc(View view) {
-        String email = emailText.getText().toString();
-        String password = passwordText.getText().toString();
-
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(Login.this, "Please enter your email and password",
-                           Toast.LENGTH_SHORT).show();
-        }
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(Login.this, "You entered successfully",
-                                    Toast.LENGTH_LONG).show();
-                            // here we need to navigate to homepage fragment
-                        } else {
-                            Toast.makeText(Login.this, "Login failed",
-                                    Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
     }
 }
