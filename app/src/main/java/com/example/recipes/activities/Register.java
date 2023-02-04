@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.recipes.R;
-import com.example.recipes.Users;
+import com.example.recipes.models.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Register extends AppCompatActivity {
 
     private FirebaseAuth mAuth; // global
@@ -32,6 +34,7 @@ public class Register extends AppCompatActivity {
     private EditText conPasswordText;
 
     long id = 0;
+    AtomicInteger count = new AtomicInteger();
 
     Button registerBtn;
     TextView loginHereBtn;
@@ -121,6 +124,6 @@ public class Register extends AppCompatActivity {
 
         Users p = new Users(email, password, fullName);
         databaseReference = database.getReference().child("Users");
-        databaseReference.child(String.valueOf(id + 1)).setValue(p);
+        databaseReference.child(String.valueOf(id+1)).setValue(p);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.recipes;
+package com.example.recipes.models;
 
 public class Users {
     public String email;

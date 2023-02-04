@@ -2,6 +2,7 @@ package com.example.recipes.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,4 +39,11 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
     }
+    public void regHere(View view) {
+
+        // open Register activity
+        Intent intent = new Intent(Login.this, Register.class);
+        startActivity(intent);
+    }
+
 }
