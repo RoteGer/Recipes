@@ -79,6 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginStart="5dp"
+                android:onClick="regHere"
                 android:text="Register here"
                 android:textStyle="bold" />
         </LinearLayout>

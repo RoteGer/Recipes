@@ -102,35 +102,38 @@ public class FragmentLogin extends Fragment {
         passwordText = view.findViewById(R.id.password);
         loginBtn = view.findViewById(R.id.loginBtn);
 
-
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                String email = emailText.getText().toString();
-                String password = passwordText.getText().toString();
-                if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(getActivity(), "Please enter your email and password", Toast.LENGTH_LONG).show();
-                }
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "You entered successfully",
-                                            Toast.LENGTH_LONG).show();
-                                    Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
-                                } else {
-                                    Toast.makeText(getActivity(), "You entered field",
-                                            Toast.LENGTH_LONG).show();
-                                }
-
-                            }
-
-                        });
-
-            }
-        });
-
-
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
+
+    public void loginFunc(View view) {
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(getActivity(), "Please enter your email and password", Toast.LENGTH_LONG).show();
+        }
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(getActivity(), "You entered successfully",
+                                    Toast.LENGTH_LONG).show();
+                            Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
+                        } else {
+                            Toast.makeText(getActivity(), "You entered field",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+
+    }
+
+    public void regHere(View view) {
+
+            // open Register activity
+            Intent intent = new Intent(getActivity(), Register.class);
+            startActivity(intent);
+    }
 }
+
