@@ -28,7 +28,7 @@
     </fragment>
     <activity
         android:id="@+id/register"
-        android:name="com.example.recipes.Register"
+        android:name="com.example.recipes.activities.Register"
         android:label="activity_register"
         tools:layout="@layout/activity_register" />
 </navigation>
