@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E3E8E8"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".activities.Login">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
