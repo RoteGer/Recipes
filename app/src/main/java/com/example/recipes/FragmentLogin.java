@@ -126,28 +126,30 @@ public class FragmentLogin extends Fragment {
                          Toast.makeText(getActivity(),"Please enter your email and password",Toast.LENGTH_LONG).show();
                     }
                 mAuth.signInWithEmailAndPassword(email, password)
-                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
-                 {
-                    @Override
-                  public void onComplete(@NonNull Task<AuthResult> task) {
-                   if (task.isSuccessful())
-                   {
-                    Toast.makeText(getActivity(), "You entered successfully",
-                           Toast.LENGTH_LONG).show();
-                      Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
-                    }
-                     else
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
                         {
-                            Toast.makeText(getActivity(), "You entered field",
-                                    Toast.LENGTH_LONG).show();
-                            Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_register);
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful())
+                                {
+                                    Toast.makeText(getActivity(), "You entered successfully",
+                                            Toast.LENGTH_LONG).show();
+                                    Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
+                                }
+                                else
+                                {
+                                    Toast.makeText(getActivity(), "You entered field",
+                                            Toast.LENGTH_LONG).show();
+                                    Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_register);
+                                }
+
+                            }
                         }
 
-                  }
-                  }
-                 });
+            });
 
         };
     });
+
 
 }
