@@ -56,7 +56,6 @@
             android:layout_weight="1.15"
             android:background="@drawable/design_button"
             android:fontFamily="sans-serif-condensed"
-            android:onClick="loginFunc"
             android:text="Login"
             android:textSize="30sp" />
 
