@@ -41,12 +41,11 @@
 
 
             <Button
-                android:id="@+id/recipes"
+                android:id="@+id/recipesBtn"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1.1"
-                android:onClick="ButtonRecipesPage"
                 android:text="מתכונים"
                 android:background="@drawable/design_simple_button"
                 android:textSize="34sp" />
@@ -68,7 +67,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1.1"
-                android:onClick="BbuttonRecipesPage"
                 android:text="פרטים אישיים"
                 android:background="@drawable/design_simple_button"
                 android:textSize="34sp" />
@@ -89,7 +87,6 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1.1"
-                android:onClick="ButtonLikePage"
                 android:text="מנות שאהבתי♥ "
                 android:textSize="34sp"
                 android:background="@drawable/design_simple_button"/>
