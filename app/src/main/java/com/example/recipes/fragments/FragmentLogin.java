@@ -1,20 +1,22 @@
-package com.example.recipes.fragments;
+package com.example.recipes;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import android.content.Intent;
 
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.recipes.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -37,7 +39,8 @@ public class FragmentLogin extends Fragment {
     FirebaseDatabase database;
     DatabaseReference myRef;
 
-    Button login;
+    Button loginBtn;
+    TextView registerHereBtn;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,14 +80,15 @@ public class FragmentLogin extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+        }    }
+
+   // public  <T extends android.view.View> T findViewById(  @IdRes int id) {
+    //}
 
     private void setContentView(int activity_login) {
     }
 
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -92,48 +96,58 @@ public class FragmentLogin extends Fragment {
         //return inflater.inflate(R.layout.fragment_login, container, false);
 
 
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view =  inflater.inflate(R.layout.fragment_login, container, false);
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance(); // local
 
         emailText = view.findViewById(R.id.emailAddress);
         passwordText = view.findViewById(R.id.password);
-        login = view.findViewById(R.id.loginBtn);
+        loginBtn = view.findViewById(R.id.loginBtn);
 
-        login.setOnClickListener(new OnClickListener() {
+        registerHereBtn = view.findViewById(R.id.registerHere);
 
+        registerHereBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // open Register activity
+                Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_register);
+            }
+        });
+        Button button = view.findViewById(R.id.loginBtn);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 String email = emailText.getText().toString();
                 String password = passwordText.getText().toString();
-
                 if (email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(getActivity(), "Please enter your email and password", Toast.LENGTH_LONG).show();
-                }
+                         Toast.makeText(getActivity(),"Please enter your email and password",Toast.LENGTH_LONG).show();
+                    }
                 mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "You entered successfully",
-                                            Toast.LENGTH_LONG).show();
-                                    Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
-                                } else {
-                                    Toast.makeText(getActivity(), "Your entered field",
-                                            Toast.LENGTH_LONG).show();
-                                }
-                            }
-                        });
-            }
+                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>()
+                 {
+                    @Override
+                  public void onComplete(@NonNull Task<AuthResult> task) {
+                   if (task.isSuccessful())
+                   {
+                    Toast.makeText(getActivity(), "You entered successfully",
+                           Toast.LENGTH_LONG).show();
+                      Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
+                    }
+                     else
+                        {
+                            Toast.makeText(getActivity(), "You entered field",
+                                    Toast.LENGTH_LONG).show();
+                            Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_register);
+                        }
 
-        });
+                  }
+                  }
+                 });
 
-
-        return inflater.inflate(R.layout.fragment_login, container, false);
-    }
-
+        };
+    });
 
 }
-
