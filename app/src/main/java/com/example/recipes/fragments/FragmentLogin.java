@@ -91,7 +91,6 @@ public class FragmentLogin extends Fragment {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_login, container, false);
 
-
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         setContentView(R.layout.activity_login);
 
@@ -100,38 +99,35 @@ public class FragmentLogin extends Fragment {
         emailText = view.findViewById(R.id.emailAddress);
         passwordText = view.findViewById(R.id.password);
         login = view.findViewById(R.id.loginBtn);
-
         login.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
                 String email = emailText.getText().toString();
                 String password = passwordText.getText().toString();
 
                 if (email.isEmpty() || password.isEmpty()) {
                     Toast.makeText(getActivity(), "Please enter your email and password", Toast.LENGTH_LONG).show();
-                }
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getActivity(), "You entered successfully",
-                                            Toast.LENGTH_LONG).show();
-                                    Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
-                                } else {
-                                    Toast.makeText(getActivity(), "Your entered field",
-                                            Toast.LENGTH_LONG).show();
+                } else {
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(getActivity(), "You entered successfully",
+                                                Toast.LENGTH_LONG).show();
+                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
+                                    } else {
+                                        Toast.makeText(getActivity(), "Your entered failed",
+                                                Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
 
         });
 
-
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        return view;
     }
 
 
