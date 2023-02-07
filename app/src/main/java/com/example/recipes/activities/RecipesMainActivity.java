@@ -39,8 +39,8 @@ public class RecipesMainActivity extends AppCompatActivity {
 
         recycleView.setItemAnimator(new DefaultItemAnimator());
 
-        Recipes_RecyclerViewAdapter c = new Recipes_RecyclerViewAdapter(arr);
-        recycleView.setAdapter(c);
+        adapter = new Recipes_RecyclerViewAdapter(arr);
+        recycleView.setAdapter(adapter);
 
     }
 }

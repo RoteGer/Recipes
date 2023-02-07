@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class Register extends AppCompatActivity {
 
@@ -32,16 +32,15 @@ public class Register extends AppCompatActivity {
     private EditText emailText;
     private EditText passwordText;
     private EditText conPasswordText;
+    private CheckBox isAdminBool;
 
     long id = 0;
-    AtomicInteger count = new AtomicInteger();
 
     Button registerBtn;
     TextView loginHereBtn;
     FirebaseDatabase database;
     DatabaseReference databaseReference;
 
-    // DatabaseReference  = FirebaseDatabase.getInstance().getReference();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +52,7 @@ public class Register extends AppCompatActivity {
         emailText = findViewById(R.id.emailAddress);
         passwordText = findViewById(R.id.password);
         conPasswordText = findViewById(R.id.conPassword);
+        isAdminBool = (CheckBox)findViewById(R.id.isAdmin);
 
         registerBtn = findViewById(R.id.registerBtn);
         loginHereBtn = findViewById(R.id.loginHere);
@@ -71,12 +71,14 @@ public class Register extends AppCompatActivity {
         String password = passwordText.getText().toString();
         String conPassword = conPasswordText.getText().toString();
         String fullName = fullNameText.getText().toString();
+        Boolean isAdmin = isAdminBool.isChecked();
 
         // validation user fill all the fields before sending to DB
         if (fullName.isEmpty() || email.isEmpty() ||
                 password.isEmpty() || conPassword.isEmpty()) {
             Toast.makeText(Register.this, "Please fill all the fields",
                     Toast.LENGTH_SHORT).show();
+
             // confirm password validation
         } else if (!password.equals(conPassword)) {
             Toast.makeText(Register.this, "Passwords are not matching",
@@ -90,18 +92,20 @@ public class Register extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(Register.this, "You registered successfully",
                                         Toast.LENGTH_LONG).show();
+                                writeDB(email, password, fullName, isAdmin);
                             } else {
                                 Toast.makeText(Register.this, "Failed to register",
                                         Toast.LENGTH_LONG).show();
+                                return;
                             }
                         }
                     });
-            writeDB(email, password, fullName);
+
         }
     }
 
 
-    public void writeDB(String email, String password, String fullName) {
+    public void writeDB(String email, String password, String fullName, Boolean isAdmin) {
 
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference().child("Users");
@@ -122,8 +126,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        Users p = new Users(email, password, fullName);
-        databaseReference = database.getReference().child("Users");
+        Users p = new Users(email, password, fullName, isAdmin);
         databaseReference.child(String.valueOf(id+1)).setValue(p);
     }
 }
