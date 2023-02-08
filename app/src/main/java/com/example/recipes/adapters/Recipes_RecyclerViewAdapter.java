@@ -20,16 +20,16 @@ public class Recipes_RecyclerViewAdapter extends RecyclerView.Adapter<Recipes_Re
     Context context;
     ArrayList<Recipes> recipesModels;
 
-    public Recipes_RecyclerViewAdapter(ArrayList<Recipes> recipesModels) {
+    public Recipes_RecyclerViewAdapter(ArrayList<Recipes> recipesModels,Context context) {
         this.recipesModels = recipesModels;
+        this.context = context;
     };
     @NonNull
     @Override
     public Recipes_RecyclerViewAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // inflate the layout
-
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.activity_recipes_main, parent, false);
+        View view = inflater.inflate(R.layout.cards_layout, parent, false);
         return new Recipes_RecyclerViewAdapter.MyViewHolder(view);
     }
 
@@ -40,8 +40,7 @@ public class Recipes_RecyclerViewAdapter extends RecyclerView.Adapter<Recipes_Re
 
         holder.title.setText(recipesModels.get(position).getTitle());
         holder.description.setText(recipesModels.get(position).getSummary());
-        holder.imageView.setImageResource(Integer.parseInt(recipesModels.get(position).getImage()));
-
+        //holder.imageView.setImageResource(recipesModels.get(position).getImage());
     }
 
     @Override
@@ -50,14 +49,14 @@ public class Recipes_RecyclerViewAdapter extends RecyclerView.Adapter<Recipes_Re
         return recipesModels.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imageView;
         TextView title, description;
         public MyViewHolder (@NonNull View itemView) {
             super (itemView);
 
-            imageView =itemView.findViewById(R.id.imageView);
+            imageView = itemView.findViewById(R.id.imageView);
             title = itemView.findViewById(R.id.textView);
             description = itemView.findViewById(R.id.textView2);
         }

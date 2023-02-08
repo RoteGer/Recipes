@@ -16,7 +16,7 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:text="REGISTER HERE"
-        android:textColor="#009688"
+        android:textColor="#00897B"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -67,6 +67,16 @@
         android:inputType="textPassword"
         android:padding="5dp"
         android:textSize="20sp" />
+
+    <CheckBox
+        android:id="@+id/isAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:padding="5dp"
+        android:text="Admin mode" />
 
     <Button
         android:id="@+id/registerBtn"

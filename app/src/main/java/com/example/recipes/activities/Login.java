@@ -22,17 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 
-    private FirebaseAuth mAuth; // global
-    private EditText emailText;
-    private EditText passwordText;
-
-    FirebaseDatabase database;
-    DatabaseReference myRef;
-
-    Button loginBtn;
-    TextView registerHereBtn;
-
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
