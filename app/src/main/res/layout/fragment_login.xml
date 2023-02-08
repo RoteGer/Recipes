@@ -3,13 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="15dp"
+    android:paddingStart="20dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="15dp"
+    android:paddingEnd="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="20dp"
     tools:context=".fragments.FragmentLogin">
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="50dp"
+        android:paddingBottom="30dp">
 
         <TextView
             android:id="@+id/textView"
@@ -18,44 +27,48 @@
             android:layout_margin="50dp"
             android:background="#E3E8E8"
             android:fontFamily="sans-serif-condensed"
-            android:gravity="center"
+            android:gravity="center|center_horizontal|center_vertical"
             android:text="LOGIN HERE"
+            android:textAlignment="center"
             android:textColor="#00897B"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/emailAddress"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="50dp"
-            android:layout_weight="1.1"
+            android:layout_margin="45dp"
+            android:layout_weight="1.15"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="5dp"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="50dp"
-            android:layout_weight="1.1"
+            android:layout_margin="45dp"
+            android:layout_weight="1.15"
             android:ems="10"
             android:hint="Password"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:padding="5dp"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <Button
             android:id="@+id/loginBtn"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="30dp"
-            android:layout_weight="1.15"
+            android:layout_width="197dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1.3"
             android:background="@drawable/design_button"
             android:fontFamily="sans-serif-condensed"
+            android:freezesText="false"
+            android:gravity="center_horizontal|center_vertical"
             android:text="Login"
             android:textSize="30sp" />
 
@@ -64,7 +77,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingTop="30dp">
 
             <TextView
                 android:layout_width="match_parent"

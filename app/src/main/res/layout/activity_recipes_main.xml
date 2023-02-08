@@ -6,14 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".activities.RecipesMainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_Recipes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:text="Recipes"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="7.8"
+            android:orientation="horizontal">
+
+            <SearchView
+                android:layout_width="267dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8">
+
+
+            </SearchView>
+
+            <Button
+                android:id="@+id/add_recipes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/design_button"
+                android:text="+"
+                android:textSize="30sp" />
+
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="100dp"
+            android:layout_weight="1"
+            android:padding="10dp" >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
