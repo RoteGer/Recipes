@@ -30,7 +30,7 @@ public class DataService {
         StrictMode.setThreadPolicy(policy);
 
         try {
-            url = new URL (sURL);
+            url = new URL(sURL);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -42,30 +42,31 @@ public class DataService {
             JsonParser jp = new JsonParser();
             JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
 
-                JsonArray rootobj = root.getAsJsonArray();
+           // JsonArray rootobj = root.getAsJsonArray();
+            JsonObject jsonObject = root.getAsJsonObject();
+            JsonArray array = jsonObject.getAsJsonArray("results");
+            for (JsonElement je : array) {
+                JsonObject obj = je.getAsJsonObject();
+                JsonElement title = obj.get("title");
+                JsonElement summary = obj.get("summary");
+                JsonElement image = obj.get("image");
 
-                for (JsonElement je : rootobj) {
-                    JsonObject obj = je.getAsJsonObject();
-                    JsonElement title = obj.get ("title");
-                    JsonElement summary = obj.get ("summary");
-                    JsonElement image = obj.get ("image");
+                String titleS = title.toString().replace("\"", "").trim();
+                String summaryS = summary.toString().replace("\"", "").trim();
+                String imageS = image.toString().replace("\"", "").trim();
 
-                    String titleS = title.toString().replace("\"", "").trim();
-                    String summaryS = summary.toString().replace("\"", "").trim();
-                    String imageS = image.toString().replace("\"", "").trim();
-
-                    ArrayList<String> arrInstructions = new ArrayList<String>();
-                    JsonElement JInstructions = obj.get ("analyzedInstructions");
-                    if (JInstructions != null) {
-                        JsonArray instructionsArray = JInstructions.getAsJsonArray();
-                        for( JsonElement j : instructionsArray) {
-                            String s = j.toString().replace("\"", "").trim();
-                            arrInstructions.add(s);
-                        }
+                ArrayList<String> arrInstructions = new ArrayList<String>();
+                JsonElement JInstructions = obj.get("analyzedInstructions");
+                if (JInstructions != null) {
+                    JsonArray instructionsArray = JInstructions.getAsJsonArray();
+                    for (JsonElement j : instructionsArray) {
+                        String s = j.toString().replace("\"", "").trim();
+                        arrInstructions.add(s);
                     }
-                    arrRecipes.add (new Recipes(titleS , summaryS, arrInstructions, imageS));
-
                 }
+                arrRecipes.add(new Recipes(titleS, summaryS, arrInstructions, imageS));
+
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

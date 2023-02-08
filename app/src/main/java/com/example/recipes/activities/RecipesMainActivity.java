@@ -29,7 +29,6 @@ public class RecipesMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recipes_main);
 
         DataService ds = new DataService();
-        ArrayList<Recipes> arr = ds.getArrRecipes();
 
         // Get to adapter
 
@@ -39,7 +38,7 @@ public class RecipesMainActivity extends AppCompatActivity {
 
         recycleView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new Recipes_RecyclerViewAdapter(arr);
+        adapter = new Recipes_RecyclerViewAdapter(ds.getArrRecipes(),this);
         recycleView.setAdapter(adapter);
 
     }
