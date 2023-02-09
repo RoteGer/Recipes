@@ -21,11 +21,8 @@ import com.example.recipes.activities.RecipesMainActivity;
  */
 public class Home extends Fragment {
 
-
     Button recipes;
     Button personalInfo;
-
-    private static final String isAdmin = "isAdminBundle";
 
     private String isAdminBundle;
 

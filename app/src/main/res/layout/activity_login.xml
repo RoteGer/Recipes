@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#E3E8E8"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".activities.Login">
 
@@ -13,6 +13,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         app:defaultNavHost="true"
         app:navGraph="@navigation/graph" />
 

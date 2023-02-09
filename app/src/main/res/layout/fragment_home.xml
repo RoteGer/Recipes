@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3E8E8"
+    android:background="@drawable/background"
     tools:context=".fragments.Home">
 
     <LinearLayout
@@ -24,10 +24,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="Welcome"
                 android:textAlignment="center"
-                android:textColor="#009688"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 

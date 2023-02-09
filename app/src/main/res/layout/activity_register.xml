@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3E8E8"
+    android:background="@drawable/background"
     android:orientation="vertical"
     android:paddingLeft="20dp"
     android:paddingTop="40dp"
@@ -17,11 +16,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#E3E8E8"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
-        android:text="REGISTER HERE"
-        android:textColor="#00897B"
+        android:text="REGISTER"
+        android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -108,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:textColor="@color/black"
             android:text="Already have an account?" />
 
         <TextView
@@ -116,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Login here"
+            android:textColor="@color/black"
             android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>
