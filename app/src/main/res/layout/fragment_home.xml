@@ -25,10 +25,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
                 android:layout_weight="2"
-                android:text="Home Page"
+                android:text="Welcome"
                 android:textAlignment="center"
                 android:textColor="#009688"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -49,8 +49,8 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/design_button"
-                android:text="מתכונים"
-                android:textSize="34sp" />
+                android:text="Recipes"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -68,8 +68,8 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/design_button"
-                android:text="פרטים אישיים"
-                android:textSize="34sp" />
+                android:text="Personal Info"
+                android:textSize="15sp" />
         </LinearLayout>
 
 
@@ -88,8 +88,8 @@
                 android:layout_marginLeft="60dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/design_button"
-                android:text="מנות שאהבתי"
-                android:textSize="34sp" />
+                android:text="Favorite"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 
