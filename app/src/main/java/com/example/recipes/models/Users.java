@@ -26,4 +26,6 @@ public class Users {
     public String getFullName() { return fullName; }
 
     public String getPassword() { return password; }
+
+    public boolean isAdmin() { return isAdmin; }
 }

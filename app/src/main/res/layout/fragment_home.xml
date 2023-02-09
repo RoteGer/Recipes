@@ -62,7 +62,7 @@
 
 
             <Button
-                android:id="@+id/minus"
+                android:id="@+id/personalInfoBtn"
                 android:layout_width="233dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="60dp"

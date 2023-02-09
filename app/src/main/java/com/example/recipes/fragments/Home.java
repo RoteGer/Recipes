@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.recipes.R;
-import com.example.recipes.activities.Login;
 import com.example.recipes.activities.RecipesMainActivity;
-import com.example.recipes.activities.Register;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,16 +23,15 @@ public class Home extends Fragment {
 
 
     Button recipes;
-
+    Button personalInfo;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
+    private static final String isAdmin = "isAdminBundle";
     private static final String ARG_PARAM2 = "param2";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String isAdminBundle;
 
     public Home() {
         // Required empty public constructor
@@ -52,8 +49,7 @@ public class Home extends Fragment {
     public static Home newInstance(String param1, String param2) {
         Home fragment = new Home();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString("isAdmin", param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,17 +58,29 @@ public class Home extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            isAdminBundle = getArguments().getString("isAdmin");
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        Bundle bundle = this.getArguments();
         recipes = view.findViewById(R.id.recipesBtn);
+        personalInfo = view.findViewById(R.id.personalInfoBtn);
+        if (isAdminBundle == "false") {
+            personalInfo.setVisibility(view.GONE);
+        }
+        personalInfo.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         recipes.setOnClickListener(new View.OnClickListener() {
 
@@ -83,6 +91,7 @@ public class Home extends Fragment {
             }
 
         });
+
         return view;
     }
 
