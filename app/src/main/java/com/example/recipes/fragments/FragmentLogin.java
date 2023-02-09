@@ -18,8 +18,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -88,7 +91,6 @@ public class FragmentLogin extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_login, container, false);
 
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         setContentView(R.layout.activity_login);
@@ -112,11 +114,38 @@ public class FragmentLogin extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(getActivity(), "You entered successfully",
-                                                Toast.LENGTH_LONG).show();
-                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
+                                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                                        DatabaseReference myRef = database.getReference("Users");
+                                        myRef.addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()){
+                                                    if (childSnapshot.child("email").getValue().toString().equals(email)){
+                                                        Bundle bundle = new Bundle();
+                                                        if (childSnapshot.child("isAdmin").getValue().equals(true)){
+                                                            // User is Admin
+                                                            Toast.makeText(getActivity(), "Welcome Admin " + childSnapshot.child("fullName").getValue().toString(),
+                                                                    Toast.LENGTH_LONG).show();
+                                                        } else {
+                                                            // User is not Admin
+                                                                Toast.makeText(getActivity(), "Welcome user " + childSnapshot.child("fullName").getValue().toString(),
+                                                                        Toast.LENGTH_LONG).show();
+                                                        }
+                                                        String isAdmin = childSnapshot.child("isAdmin").getValue().toString();
+                                                        bundle.putString("isAdmin", isAdmin);
+                                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2, bundle);
+                                                    }
+                                                }
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
                                     } else {
-                                        Toast.makeText(getActivity(), "Your entered failed",
+                                        Toast.makeText(getActivity(), "Failed to enter",
                                                 Toast.LENGTH_LONG).show();
 
                                     }
