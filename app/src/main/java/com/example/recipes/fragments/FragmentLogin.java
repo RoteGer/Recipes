@@ -71,7 +71,7 @@ public class FragmentLogin extends Fragment {
         login = view.findViewById(R.id.loginBtn);
         login.setOnClickListener(new OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 String email = emailText.getText().toString();
                 String password = passwordText.getText().toString();
 

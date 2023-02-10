@@ -9,7 +9,11 @@
         android:id="@+id/home2"
         android:name="com.example.recipes.fragments.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_personalInfo"
+            app:destination="@id/personalInfo" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -28,9 +32,13 @@
         android:name="com.example.recipes.activities.Register"
         android:label="activity_register"
         tools:layout="@layout/activity_register" />
-    <activity
-        android:id="@+id/personalInfoActivity"
-        android:name="com.example.recipes.activities.PersonalInfoActivity"
-        android:label="activity_personal_info"
-        tools:layout="@layout/activity_personal_info" />
+    <fragment
+        android:id="@+id/personalInfo"
+        android:name="com.example.recipes.PersonalInfo"
+        android:label="fragment_personal_info"
+        tools:layout="@layout/fragment_personal_info" >
+        <action
+            android:id="@+id/action_personalInfo_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
 </navigation>

@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:paddingLeft="20dp"
-    android:paddingTop="40dp"
-    android:paddingRight="20dp"
-    android:paddingBottom="10dp"
-    tools:context=".activities.PersonalInfoActivity">
+    tools:context=".PersonalInfo">
 
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="626dp"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingTop="80dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="60dp">
+
+
+      <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +29,7 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
-    <EditText
+        <EditText
         android:id="@+id/updateFullName"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +42,7 @@
         android:inputType="text"
         android:textSize="16sp" />
 
-    <EditText
+      <EditText
         android:id="@+id/updateEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,7 +56,7 @@
         android:padding="5dp"
         android:textSize="16sp" />
 
-    <EditText
+      <EditText
         android:id="@+id/updatePassword"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,7 +70,7 @@
         android:padding="5dp"
         android:textSize="16sp" />
 
-    <EditText
+      <EditText
         android:id="@+id/updateConPassword"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,22 +85,22 @@
         android:textSize="16sp" />
 
 
-    <Button
-        android:id="@+id/updateBtn"
-        android:layout_width="149dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="30dp"
-        android:layout_weight="1.05"
-        android:background="@drawable/design_button"
-        android:fontFamily="sans-serif-condensed"
-        android:gravity="center|center_horizontal|center_vertical"
-        android:onClick="UpdateFunc"
-        android:text="Update"
-        android:textSize="16sp" />
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="149dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/design_button"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:onClick="UpdateFunc"
+            android:text="Update"
+            android:textSize="16sp" />
 
-    <LinearLayout
+         <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -106,7 +110,7 @@
         android:paddingBottom="30dp">
 
 
-        <TextView
+          <TextView
             android:id="@+id/Back_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,6 +118,6 @@
             android:text="Back here"
             android:textColor="@color/black"
             android:textStyle="bold" />
-    </LinearLayout>
-</LinearLayout>
-
+        </LinearLayout>
+      </LinearLayout>
+</FrameLayout>

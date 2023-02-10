@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
-import com.example.recipes.activities.PersonalInfoActivity;
 import com.example.recipes.R;
 import com.example.recipes.activities.RecipesMainActivity;
 
@@ -63,8 +63,7 @@ public class Home extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PersonalInfoActivity.class);
-                startActivity(intent);
+                Navigation.findNavController(view).navigate(R.id.action_home2_to_personalInfo);
             }
         });
 
