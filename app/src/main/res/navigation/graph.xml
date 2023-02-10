@@ -28,4 +28,9 @@
         android:name="com.example.recipes.activities.Register"
         android:label="activity_register"
         tools:layout="@layout/activity_register" />
+    <activity
+        android:id="@+id/personalInfoActivity"
+        android:name="com.example.recipes.activities.PersonalInfoActivity"
+        android:label="activity_personal_info"
+        tools:layout="@layout/activity_personal_info" />
 </navigation>
