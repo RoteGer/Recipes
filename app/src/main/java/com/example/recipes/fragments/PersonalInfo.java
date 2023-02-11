@@ -48,6 +48,7 @@ public class PersonalInfo extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("Users");
     Map<String, Object> userUpdates = new HashMap<>();
+    Bundle bundle = new Bundle();
 
     public PersonalInfo() {
         // Required empty public constructor
@@ -66,7 +67,9 @@ public class PersonalInfo extends Fragment {
             passwordBundle = getArguments().getString("password");
             idBundle = getArguments().getString("id");
         }
-    }
+        bundle.putString("email", emailBundle);
+        bundle.putString("password", passwordBundle);
+        bundle.putString("id", idBundle);    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -92,6 +95,7 @@ public class PersonalInfo extends Fragment {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String email = emailText.getText().toString();
                 String password = passwordText.getText().toString();
                 String conPassword = conPasswordText.getText().toString();
@@ -106,6 +110,8 @@ public class PersonalInfo extends Fragment {
                     Toast.makeText(getActivity(), "Passwords are not matching",
                             Toast.LENGTH_SHORT).show();
                 } else if (password != null && conPassword != null && !password.isEmpty() && !conPassword.isEmpty()) {
+                    bundle.putString("password", password);
+                    userUpdates.put("password", password);
                     updatePassword(password);
                 }
 
@@ -114,12 +120,17 @@ public class PersonalInfo extends Fragment {
                 }
 
                 if (email != NULL && !email.isEmpty()) {
+                    bundle.putString("email", email);
+                    userUpdates.put("email", email);
                     updateEmail(email);
                 }
 
                 if (!userUpdates.isEmpty() && !userUpdates.equals(null)) {
                     updateUserData(userUpdates);
                 }
+
+                bundle.putString("id", idBundle);
+                Navigation.findNavController(view).navigate(R.id.action_personalInfo_to_home, bundle);
             }
 
         });
@@ -127,23 +138,12 @@ public class PersonalInfo extends Fragment {
     }
 
     private void updateUserData(Map userUpdates) {
-        Toast.makeText(getContext(), userUpdates.toString(),  Toast.LENGTH_SHORT).show();
-
-
-        myRef.child(idBundle).updateChildren(userUpdates)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(getActivity(), "Data updated successfully", Toast.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(getActivity(), "Data update failed", Toast.LENGTH_SHORT).show();
-                });
+        myRef.child(idBundle).updateChildren(userUpdates);
     }
 
     public void updatePassword(String newPass) {
         AuthCredential credential = EmailAuthProvider.getCredential(emailBundle, passwordBundle);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("Users");
         user.reauthenticate(credential)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -153,8 +153,8 @@ public class PersonalInfo extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        userUpdates.put("password", newPass);
-                                        updateUserData(userUpdates);
+                                        Toast.makeText(getActivity(), "Updated password",
+                                                Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(getActivity(), "Error password not updated",
                                                 Toast.LENGTH_SHORT).show();
@@ -171,7 +171,7 @@ public class PersonalInfo extends Fragment {
 
     public void updateEmail(String newEmail) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        AuthCredential credential = EmailAuthProvider.getCredential(emailBundle, passwordBundle);
+        AuthCredential credential = EmailAuthProvider.getCredential(emailBundle.toString(), passwordBundle.toString());
 
         // Making sure email does not exist
         myRef.addValueEventListener(new ValueEventListener() {
@@ -194,8 +194,6 @@ public class PersonalInfo extends Fragment {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
                                                         if (task.isSuccessful()) {
-                                                            userUpdates.put("email", newEmail);
-                                                            updateUserData(userUpdates);
                                                             Log.d(TAG, "User email address updated");
                                                         }
                                                     }
