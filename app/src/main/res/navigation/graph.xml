@@ -6,12 +6,12 @@
     app:startDestination="@id/fragmentLogin">
 
     <fragment
-        android:id="@+id/home2"
+        android:id="@+id/home"
         android:name="com.example.recipes.fragments.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_home2_to_personalInfo"
+            android:id="@+id/action_home_to_personalInfo"
             app:destination="@id/personalInfo" />
     </fragment>
 
@@ -21,8 +21,8 @@
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_fragmentLogin_to_home2"
-            app:destination="@id/home2" />
+            android:id="@+id/action_fragmentLogin_to_home"
+            app:destination="@id/home" />
         <action
             android:id="@+id/action_fragmentLogin_to_register"
             app:destination="@id/register" />
@@ -32,13 +32,18 @@
         android:name="com.example.recipes.activities.Register"
         android:label="activity_register"
         tools:layout="@layout/activity_register" />
+    <activity
+        android:id="@+id/recipes"
+        android:name="com.example.recipes.activities.RecipesMainActivity"
+        android:label="Recipes"
+        tools:layout="@layout/activity_recipes_main" />
     <fragment
         android:id="@+id/personalInfo"
-        android:name="com.example.recipes.PersonalInfo"
+        android:name="com.example.recipes.fragments.PersonalInfo"
         android:label="fragment_personal_info"
         tools:layout="@layout/fragment_personal_info" >
         <action
-            android:id="@+id/action_personalInfo_to_home2"
-            app:destination="@id/home2" />
+            android:id="@+id/action_personalInfo_to_home"
+            app:destination="@id/home" />
     </fragment>
 </navigation>

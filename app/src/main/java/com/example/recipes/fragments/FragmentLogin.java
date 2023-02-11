@@ -101,8 +101,14 @@ public class FragmentLogin extends Fragment {
                                                                         Toast.LENGTH_LONG).show();
                                                         }
                                                         String isAdmin = childSnapshot.child("isAdmin").getValue().toString();
+                                                        String id = childSnapshot.getKey();
+
                                                         bundle.putString("isAdmin", isAdmin);
-                                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2, bundle);
+                                                        bundle.putString("email", email);
+                                                        bundle.putString("password", password);
+                                                        bundle.putString("id", id);
+
+                                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home, bundle);
                                                     }
                                                 }
 
@@ -116,7 +122,6 @@ public class FragmentLogin extends Fragment {
                                     } else {
                                         Toast.makeText(getActivity(), "Failed to enter",
                                                 Toast.LENGTH_LONG).show();
-                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home2);
                                     }
                                 }
                             });
@@ -124,10 +129,7 @@ public class FragmentLogin extends Fragment {
             }
 
         });
-
         return view;
     }
-
-
 }
 

@@ -25,14 +25,18 @@ public class Home extends Fragment {
     Button personalInfo;
 
     private String isAdminBundle;
+    private String email;
+    private String password;
+    private String id;
+
 
     public Home() { // Required empty public constructor
          }
 
-    public static Home newInstance(String param1) {
+    public static Home newInstance(String isAdminBundle) {
         Home fragment = new Home();
         Bundle args = new Bundle();
-        args.putString("isAdmin", param1);
+        args.putString("isAdmin", isAdminBundle);
         fragment.setArguments(args);
         return fragment;
     }
@@ -42,6 +46,9 @@ public class Home extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             isAdminBundle = getArguments().getString("isAdmin");
+            email = getArguments().getString("email");
+            password = getArguments().getString("password");
+            id = getArguments().getString("id");
         }
     }
 
@@ -63,7 +70,7 @@ public class Home extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_home2_to_personalInfo);
+                Navigation.findNavController(view).navigate(R.id.action_home_to_personalInfo, bundle);
             }
         });
 
