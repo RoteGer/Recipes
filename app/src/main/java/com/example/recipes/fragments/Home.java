@@ -23,6 +23,7 @@ public class Home extends Fragment {
 
     Button recipes;
     Button personalInfo;
+    Button about;
 
     private String isAdminBundle;
     private String email;
@@ -59,6 +60,7 @@ public class Home extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         Bundle bundle = this.getArguments();
+        about=view.findViewById(R.id.returnToHomeBtn);
         recipes = view.findViewById(R.id.recipesBtn);
         personalInfo = view.findViewById(R.id.personalInfoBtn);
 
@@ -71,6 +73,14 @@ public class Home extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_home_to_personalInfo, bundle);
+            }
+        });
+
+        about.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_home_to_about2);
             }
         });
 

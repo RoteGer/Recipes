@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home_to_personalInfo"
             app:destination="@id/personalInfo" />
+        <action
+            android:id="@+id/action_home_to_about2"
+            app:destination="@id/about2" />
     </fragment>
 
     <fragment
@@ -44,6 +47,15 @@
         tools:layout="@layout/fragment_personal_info" >
         <action
             android:id="@+id/action_personalInfo_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/about2"
+        android:name="com.example.recipes.fragments.About"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_about2_to_home"
             app:destination="@id/home" />
     </fragment>
 </navigation>
