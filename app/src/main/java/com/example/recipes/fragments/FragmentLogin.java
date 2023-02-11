@@ -107,6 +107,7 @@ public class FragmentLogin extends Fragment {
                                                         bundle.putString("email", email);
                                                         bundle.putString("password", password);
                                                         bundle.putString("id", id);
+
                                                         Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home, bundle);
                                                     }
                                                 }
@@ -121,6 +122,7 @@ public class FragmentLogin extends Fragment {
                                     } else {
                                         Toast.makeText(getActivity(), "Failed to enter",
                                                 Toast.LENGTH_LONG).show();
+                                        Navigation.findNavController(view).navigate(R.id.action_fragmentLogin_to_home);
                                     }
                                 }
                             });
