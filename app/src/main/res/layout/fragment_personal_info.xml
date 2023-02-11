@@ -17,17 +17,18 @@
         android:paddingBottom="60dp">
 
 
-      <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="sans-serif-condensed"
-        android:text="Personal Info"
-        android:textAlignment="viewStart"
-        android:textColor="#45332E"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:fontFamily="cursive"
+            android:text="Personal Info"
+            android:textAlignment="center"
+            android:textColor="#61443C"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
         android:id="@+id/updateFullName"
@@ -91,16 +92,17 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="20dp"
             android:layout_weight="1"
             android:background="@drawable/design_button"
             android:fontFamily="sans-serif-condensed"
             android:gravity="center|center_horizontal|center_vertical"
+            android:textStyle="bold"
             android:onClick="UpdateFunc"
             android:text="Update"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
-         <LinearLayout
+        <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -111,13 +113,14 @@
 
 
           <TextView
-            android:id="@+id/Back_home"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Back here"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
+              android:id="@+id/backHomeBtn"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_margin="10dp"
+              android:text="Return"
+              android:textSize="12sp"
+              android:textColor="#3A3838"
+              />
         </LinearLayout>
       </LinearLayout>
 </FrameLayout>

@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class PersonalInfo extends Fragment {
 
-    TextView backhomeBtn;
+    TextView backHome;
     private FirebaseAuth mAuth; // global
     private EditText fullNameText;
     private EditText emailText;
@@ -55,7 +55,7 @@ public class PersonalInfo extends Fragment {
 
         mAuth = FirebaseAuth.getInstance(); // local
 
-        backhomeBtn = view.findViewById(R.id.Back_home);
+        backHome = view.findViewById(R.id.backHomeBtn);
 
         fullNameText = view.findViewById(R.id.updateFullName);
         emailText = view.findViewById(R.id.updateEmailAddress);
@@ -63,7 +63,7 @@ public class PersonalInfo extends Fragment {
         conPasswordText = view.findViewById(R.id.updateConPassword);
 
 
-        backhomeBtn.setOnClickListener(new View.OnClickListener() {
+        backHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_personalInfo_to_home2);

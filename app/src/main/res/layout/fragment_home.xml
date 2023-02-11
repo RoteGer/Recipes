@@ -34,9 +34,11 @@
                 android:paddingBottom="30dp"
                 android:text="Welcome"
                 android:textAlignment="center"
-                android:textColor="#533333"
+                android:fontFamily="cursive"
+                android:textColor="#61443C"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="RtlCompat" />
 
 
 
@@ -50,18 +52,20 @@
             android:layout_margin="6dp"
             android:layout_weight="1.3"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/recipesBtn"
-                android:layout_width="233dp"
+                android:layout_width="138dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="60dp"
+                android:layout_marginStart="88dp"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/design_button"
-                android:gravity="center|center_horizontal|center_vertical"
+                android:fontFamily="sans-serif"
+                android:gravity="center|center_horizontal"
                 android:text="Recipes"
-                android:textSize="18sp" />
-
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -76,15 +80,18 @@
 
             <Button
                 android:id="@+id/like"
-                android:layout_width="233dp"
+                android:layout_width="138dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="88dp"
                 android:layout_marginBottom="40dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center|center_horizontal"
                 android:background="@drawable/design_button"
                 android:text="Favorite"
-                android:textSize="18sp" />
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,13 +103,19 @@
 
             <Button
                 android:id="@+id/personalInfoBtn"
-                android:layout_width="233dp"
+                android:layout_width="138dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="88dp"
                 android:layout_marginBottom="40dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center|center_horizontal"
+
                 android:background="@drawable/design_button"
-                android:text="Personal Info"
-                android:textSize="18sp" />
+                android:text="Update"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
         </LinearLayout>
     </LinearLayout>
 
