@@ -44,7 +44,7 @@ public class Recipes {
         return analyzedInstructions;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 }
