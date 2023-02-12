@@ -1,7 +1,6 @@
 package com.example.recipes.fragments;
 
 import static android.content.ContentValues.TAG;
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -182,7 +181,6 @@ public class PersonalInfo extends Fragment {
         // Making sure email does not exist
         myRef.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String email = emailText.getText().toString();
                 // Prompt the user to re-provide their sign-in credentials
                 user.reauthenticate(credential)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
