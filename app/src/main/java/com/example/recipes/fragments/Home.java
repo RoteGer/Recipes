@@ -60,7 +60,7 @@ public class Home extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         Bundle bundle = this.getArguments();
-        about=view.findViewById(R.id.aboutBtn);
+        about = view.findViewById(R.id.aboutBtn);
         recipes = view.findViewById(R.id.recipesBtn);
         personalInfo = view.findViewById(R.id.personalInfoBtn);
 
