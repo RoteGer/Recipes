@@ -42,6 +42,6 @@ public class About extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_about2_to_home);
             }
         });
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        return view;
     }
 }
