@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
 
             android:fontFamily="casual"
             android:paddingLeft="30dp"
@@ -43,7 +43,7 @@
             android:text="we guarantee you’ll find the perfect recipe for your taste and nutritional preferences. Our recipe box offers a variety of tasty healthy recipes for your kitchen. Learn how to cook vegetarian and vegan dishes, low-carb, gluten-free, and low-calorie options. From breakfast to dinner, you can count on our selection of crowd-pleasing tasty and healthy recipes – including weeknight favorites, seasonal twists on classics, trends and tastes from around the world."
             android:textAlignment="center"
             android:textColor="#61443C"
-            android:textSize="16.5dp"
+            android:textSize="16dp"
             android:textStyle="normal" />
 
 
@@ -51,8 +51,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:orientation="horizontal"
             android:paddingBottom="30dp">
 
