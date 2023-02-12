@@ -79,7 +79,7 @@
 
 
             <Button
-                android:id="@+id/about"
+                android:id="@+id/aboutBtn"
                 android:layout_width="138dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"

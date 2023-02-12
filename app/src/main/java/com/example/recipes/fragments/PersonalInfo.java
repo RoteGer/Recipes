@@ -69,7 +69,8 @@ public class PersonalInfo extends Fragment {
         }
         bundle.putString("email", emailBundle);
         bundle.putString("password", passwordBundle);
-        bundle.putString("id", idBundle);    }
+        bundle.putString("id", idBundle);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -106,31 +107,34 @@ public class PersonalInfo extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
 
+
+                if (fullName != null && !fullName.isEmpty()) {
+                    userUpdates.put("fullName", fullName);
+                }
+
+                if (email != null && !email.isEmpty()) {
+                    userUpdates.put("email", email);
+                }
+
                 if ((password != null || conPassword != null) && !password.equals(conPassword)) {
                     Toast.makeText(getActivity(), "Passwords are not matching",
                             Toast.LENGTH_SHORT).show();
                 } else if (password != null && conPassword != null && !password.isEmpty() && !conPassword.isEmpty()) {
-                    bundle.putString("password", password);
                     userUpdates.put("password", password);
-                    updatePassword(password);
                 }
 
-                if (fullName != NULL && !fullName.isEmpty()) {
-                    userUpdates.put("fullName", fullName);
-                }
-
-                if (email != NULL && !email.isEmpty()) {
-                    bundle.putString("email", email);
-                    userUpdates.put("email", email);
-                    updateEmail(email);
-                }
-
-                if (!userUpdates.isEmpty() && !userUpdates.equals(null)) {
+                if (!userUpdates.isEmpty() && userUpdates!=null) {
                     updateUserData(userUpdates);
                 }
 
-                bundle.putString("id", idBundle);
-                Navigation.findNavController(view).navigate(R.id.action_personalInfo_to_home, bundle);
+                if (password != null && conPassword != null && !password.isEmpty() && !conPassword.isEmpty()) {
+                    updatePassword(password);
+                }
+
+                if (email != null && !email.isEmpty()) {
+                    updateEmail(email);
+                }
+
             }
 
         });
@@ -139,6 +143,8 @@ public class PersonalInfo extends Fragment {
 
     private void updateUserData(Map userUpdates) {
         myRef.child(idBundle).updateChildren(userUpdates);
+        Toast.makeText(getActivity(), "Updated successfully",
+                Toast.LENGTH_SHORT).show();
     }
 
     public void updatePassword(String newPass) {
@@ -177,41 +183,31 @@ public class PersonalInfo extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String email = emailText.getText().toString();
-                for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    if (childSnapshot.child("email").getValue().toString().equals(email)) {
-                        Toast.makeText(getActivity(), "Email already exist", Toast.LENGTH_SHORT).show();
-                    } else {
-                        // Prompt the user to re-provide their sign-in credentials
-                        user.reauthenticate(credential)
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        Log.d(TAG, "User re-authenticated");
-
-                                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                        user.updateEmail(newEmail)
-                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                    @Override
-                                                    public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()) {
-                                                            Log.d(TAG, "User email address updated");
-                                                        }
-                                                    }
-                                                });
-                                    }
-                                });
-
-                    }
-                }
-
-        }
+                // Prompt the user to re-provide their sign-in credentials
+                user.reauthenticate(credential)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Log.d(TAG, "User re-authenticated");
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                user.updateEmail(newEmail)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Log.d(TAG, "User email address updated");
+                                                }
+                                            }
+                                        });
+                            }
+                        });
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-
-}
+    }
 }
 

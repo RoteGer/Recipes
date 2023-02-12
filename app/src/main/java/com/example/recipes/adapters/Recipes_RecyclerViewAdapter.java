@@ -40,7 +40,7 @@ public class Recipes_RecyclerViewAdapter extends RecyclerView.Adapter<Recipes_Re
 
         holder.title.setText(recipesModels.get(position).getTitle());
         holder.description.setText(recipesModels.get(position).getSummary());
-        holder.imageView.setImageResource(recipesModels.get(position).getImage());
+        //    holder.imageView.setImageResource(recipesModels.get(position).getImage());
     }
 
     @Override
